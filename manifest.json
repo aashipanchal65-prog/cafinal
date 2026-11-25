@@ -1,0 +1,26 @@
+{
+  "name": "STUDYVERSE – The Ultimate CA Study Companion",
+  "short_name": "STUDYVERSE",
+  "description": "CA Final New Scheme (May 2027) All-In-One Study Companion & Revision System",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#12121F",
+  "theme_color": "#6C63FF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity", "finance"]
+}

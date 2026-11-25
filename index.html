@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="description" content="STUDYVERSE – The Ultimate CA Study Companion. Plan Smart. Study Better. Become a CA." />
+  <meta name="theme-color" content="#6C63FF" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="STUDYVERSE" />
+
+  <title>STUDYVERSE – The Ultimate CA Study Companion</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="./manifest.json" />
+
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./icons/icon-192.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="src/css/variables.css" />
+  <link rel="stylesheet" href="src/css/reset.css" />
+  <link rel="stylesheet" href="src/css/base.css" />
+  <link rel="stylesheet" href="src/css/layout.css" />
+  <link rel="stylesheet" href="src/css/components.css" />
+  <link rel="stylesheet" href="src/css/sidebar.css" />
+  <link rel="stylesheet" href="src/css/dashboard.css" />
+  <link rel="stylesheet" href="src/css/tracker.css" />
+  <link rel="stylesheet" href="src/css/planner.css" />
+  <link rel="stylesheet" href="src/css/library.css" />
+  <link rel="stylesheet" href="src/css/ai.css" />
+  <link rel="stylesheet" href="src/css/revision.css" />
+  <link rel="stylesheet" href="src/css/mocktest.css" />
+  <link rel="stylesheet" href="src/css/notes.css" />
+  <link rel="stylesheet" href="src/css/games.css" />
+  <link rel="stylesheet" href="src/css/rewards.css" />
+  <link rel="stylesheet" href="src/css/analytics.css" />
+  <link rel="stylesheet" href="src/css/settings.css" />
+  <link rel="stylesheet" href="src/css/auth.css" />
+  <link rel="stylesheet" href="src/css/responsive.css" />
+  <link rel="stylesheet" href="src/css/animations.css" />
+  <link rel="stylesheet" href="src/css/dark.css" />
+</head>
+<body class="app-body">
+
+  <!-- =========================================================
+       APP SHELL
+  ========================================================= -->
+  <div id="app" class="app-shell">
+
+    <!-- SPLASH SCREEN -->
+    <div id="splash-screen" class="splash-screen">
+      <div class="splash-content">
+        <div class="splash-logo">
+          <div class="splash-icon">📚</div>
+          <h1 class="splash-title">STUDYVERSE</h1>
+          <p class="splash-tagline">Plan Smart. Study Better. Become a CA.</p>
+        </div>
+        <div class="splash-loader">
+          <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+          <p class="loader-text" id="loader-text">Initializing...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH LAYER (shown when not logged in) -->
+    <div id="auth-layer" class="auth-layer hidden">
+      <!-- Auth pages rendered dynamically -->
+    </div>
+
+    <!-- MAIN APP (shown when logged in) -->
+    <div id="main-app" class="main-app hidden">
+
+      <!-- SIDEBAR -->
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-logo">
+            <span class="logo-icon">📚</span>
+            <div class="logo-text">
+              <span class="logo-name">STUDYVERSE</span>
+              <span class="logo-exam">CA Final · May 2027</span>
+            </div>
+          </div>
+          <button class="sidebar-toggle-btn" id="sidebar-toggle" aria-label="Toggle sidebar">
+            <i data-lucide="panel-left"></i>
+          </button>
+        </div>
+
+        <div class="sidebar-user">
+          <div class="user-avatar" id="sidebar-avatar">👤</div>
+          <div class="user-info">
+            <span class="user-name" id="sidebar-username">Student</span>
+            <span class="user-plan">CA Final 2027</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav" id="sidebar-nav">
+          <!-- Navigation items injected by JS -->
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="exam-countdown" id="sidebar-countdown">
+            <span class="countdown-label">May 2027 Exam</span>
+            <span class="countdown-days" id="countdown-days">-- days</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CONTENT AREA -->
+      <main class="main-content" id="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar" id="topbar">
+          <div class="topbar-left">
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
+              <i data-lucide="menu"></i>
+            </button>
+            <div class="page-breadcrumb" id="page-breadcrumb">
+              <span class="breadcrumb-icon">🏠</span>
+              <span class="breadcrumb-text" id="breadcrumb-text">Dashboard</span>
+            </div>
+          </div>
+          <div class="topbar-center">
+            <div class="global-search" id="global-search-container">
+              <i data-lucide="search" class="search-icon"></i>
+              <input type="text" id="global-search-input" placeholder="Search topics, resources, notes..." class="search-input" />
+              <div class="search-results-dropdown" id="search-results-dropdown"></div>
+            </div>
+          </div>
+          <div class="topbar-right">
+            <button class="topbar-btn btn-install-pwa" id="pwa-install-btn" onclick="window.SV_installPWA()" title="Install STUDYVERSE App on Phone / PC" style="display:inline-flex; align-items:center; gap:6px; padding:6px 12px; background:var(--brand-primary); color:white; border-radius:20px; font-size:12px; font-weight:600; cursor:pointer; border:none;">
+              <i data-lucide="download"></i>
+              <span>Install App</span>
+            </button>
+            <button class="topbar-btn" id="theme-toggle-btn" aria-label="Toggle theme" title="Toggle Dark/Light Mode">
+              <i data-lucide="sun" id="theme-icon"></i>
+            </button>
+            <button class="topbar-btn" id="notification-btn" aria-label="Notifications">
+              <i data-lucide="bell"></i>
+              <span class="notification-badge" id="notification-badge" style="display:none">0</span>
+            </button>
+            <button class="topbar-btn" id="study-timer-btn" aria-label="Study Timer">
+              <i data-lucide="timer"></i>
+              <span class="timer-display" id="topbar-timer-display" style="display:none">00:00</span>
+            </button>
+            <div class="user-menu" id="user-menu-trigger">
+              <div class="user-avatar-sm" id="topbar-avatar">👤</div>
+            </div>
+          </div>
+        </header>
+
+        <!-- PAGE CONTAINER -->
+        <div class="page-container" id="page-container">
+          <!-- Pages rendered here dynamically -->
+          <div id="page-loading" class="page-loading" style="display:none">
+            <div class="page-spinner"></div>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- SIDEBAR OVERLAY (mobile) -->
+      <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    </div><!-- /main-app -->
+
+  </div><!-- /app -->
+
+  <!-- MODALS CONTAINER -->
+  <div id="modals-container"></div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- STUDY TIMER WIDGET -->
+  <div id="study-timer-widget" class="study-timer-widget hidden">
+    <div class="timer-widget-header">
+      <span class="timer-widget-label">Study Timer</span>
+      <button class="timer-close-btn" id="timer-close-btn"><i data-lucide="x"></i></button>
+    </div>
+    <div class="timer-display-large" id="timer-display-large">00:00:00</div>
+    <div class="timer-controls">
+      <button class="btn-timer-action" id="timer-start-btn">Start</button>
+      <button class="btn-timer-action" id="timer-pause-btn" style="display:none">Pause</button>
+      <button class="btn-timer-action btn-secondary" id="timer-reset-btn">Reset</button>
+    </div>
+    <div class="timer-subject-select">
+      <select id="timer-subject-select" class="form-select-sm">
+        <option value="">Select Subject...</option>
+      </select>
+    </div>
+    <div class="timer-mode-toggle">
+      <button class="timer-mode-btn active" data-mode="stopwatch">Stopwatch</button>
+      <button class="timer-mode-btn" data-mode="pomodoro">Pomodoro</button>
+    </div>
+  </div>
+
+  <!-- NOTIFICATION DROPDOWN -->
+  <div id="notification-dropdown" class="notification-dropdown hidden">
+    <div class="notification-header">
+      <span>Notifications</span>
+      <button id="clear-notifications-btn" class="btn-text-sm">Clear all</button>
+    </div>
+    <div class="notification-list" id="notification-list">
+      <div class="notification-empty">No notifications</div>
+    </div>
+  </div>
+
+  <!-- USER MENU DROPDOWN -->
+  <div id="user-menu-dropdown" class="user-menu-dropdown hidden">
+    <div class="user-menu-header">
+      <div class="user-avatar-lg" id="user-menu-avatar">👤</div>
+      <div>
+        <div class="user-menu-name" id="user-menu-name">Student</div>
+        <div class="user-menu-email" id="user-menu-email">student@email.com</div>
+      </div>
+    </div>
+    <div class="user-menu-divider"></div>
+    <button class="user-menu-item" data-action="profile"><i data-lucide="user"></i> Profile</button>
+    <button class="user-menu-item" data-action="settings"><i data-lucide="settings"></i> Settings</button>
+    <button class="user-menu-item" data-action="export"><i data-lucide="download"></i> Export Data</button>
+    <div class="user-menu-divider"></div>
+    <button class="user-menu-item user-menu-item--danger" data-action="logout"><i data-lucide="log-out"></i> Logout</button>
+  </div>
+
+  <!-- Core JS (order matters) -->
+  <script src="src/js/core/config.js"></script>
+  <script src="src/js/core/utils.js"></script>
+  <script src="src/js/core/storage.js"></script>
+  <script src="src/js/core/auth.js"></script>
+  <script src="src/js/core/router.js"></script>
+  <script src="src/js/core/eventbus.js"></script>
+  <script src="src/js/core/theme.js"></script>
+  <script src="src/js/core/notifications.js"></script>
+  <script src="src/js/core/search.js"></script>
+  <script src="src/js/core/timer.js"></script>
+
+  <!-- Syllabus Data -->
+  <script src="src/js/data/syllabus-data.js"></script>
+  <script src="src/js/data/spom-data.js"></script>
+  <script src="src/js/data/resources-data.js"></script>
+
+  <!-- Page Modules -->
+  <script src="src/js/modules/dashboard.js"></script>
+  <script src="src/js/modules/tracker.js"></script>
+  <script src="src/js/modules/planner.js"></script>
+  <script src="src/js/modules/library.js"></script>
+  <script src="src/js/modules/ai-assistant.js"></script>
+  <script src="src/js/modules/revision.js"></script>
+  <script src="src/js/modules/revision-predictor.js"></script>
+  <script src="src/js/modules/mocktest.js"></script>
+  <script src="src/js/modules/notes.js"></script>
+  <script src="src/js/modules/mistake-notebook.js"></script>
+  <script src="src/js/modules/flashcards.js"></script>
+  <script src="src/js/modules/analytics.js"></script>
+  <script src="src/js/modules/energy-zone.js"></script>
+  <script src="src/js/modules/gaming-zone.js"></script>
+  <script src="src/js/modules/rewards.js"></script>
+  <script src="src/js/modules/spom.js"></script>
+  <script src="src/js/modules/settings.js"></script>
+  <script src="src/js/modules/admin.js"></script>
+
+  <!-- Shared Community Library -->
+  <script src="src/js/modules/shared-library.js"></script>
+
+  <!-- Games -->
+  <script src="src/js/games/sudoku.js"></script>
+  <script src="src/js/games/tictactoe.js"></script>
+  <script src="src/js/games/memory-match.js"></script>
+  <script src="src/js/games/word-puzzle.js"></script>
+  <script src="src/js/games/ca-quiz.js"></script>
+  <script src="src/js/games/ludo.js"></script>
+  <script src="src/js/games/chess.js"></script>
+  <script src="src/js/games/snakes-ladders.js"></script>
+  <script src="src/js/games/number-puzzle.js"></script>
+
+  <!-- Sidebar and Navigation -->
+  <script src="src/js/core/sidebar.js"></script>
+
+  <!-- App Bootstrap -->
+  <script src="src/js/app.js"></script>
+
+  <!-- Service Worker & PWA Install Handler -->
+  <script>
+    window._pwaPrompt = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      window._pwaPrompt = e;
+      const btn = document.getElementById('pwa-install-btn');
+      if (btn) btn.style.display = 'inline-flex';
+    });
+
+    window.SV_installPWA = async function() {
+      if (window._pwaPrompt) {
+        window._pwaPrompt.prompt();
+        const { outcome } = await window._pwaPrompt.userChoice;
+        console.log('[PWA] User response:', outcome);
+        window._pwaPrompt = null;
+      } else {
+        alert(
+          "📲 How to Install STUDYVERSE on Your Device:\n\n" +
+          "• On Android Phone (Chrome):\n  Tap the 3 dots menu (⋮) → Tap 'Install App' or 'Add to Home screen'.\n\n" +
+          "• On iPhone / iPad (Safari):\n  Tap the Share button (⎋) at bottom → Tap 'Add to Home Screen' (+).\n\n" +
+          "• On Laptop / PC (Chrome / Edge):\n  Look for the install icon ⊕ in the browser address bar, or click Menu → 'Install STUDYVERSE'."
+        );
+      }
+    };
+
+    if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('[SW] Registered:', reg.scope))
+          .catch(err => console.warn('[SW] Registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>
